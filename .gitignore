@@ -163,3 +163,4 @@ cython_debug/
 
 # Local Data
 data/*
+*DS_Store
