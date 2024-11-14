@@ -25,3 +25,7 @@ def calculate_survival_rate_to_age(current_age: int,
     X = mortality_factors.loc[current_age:].values
     Y = mortality_improvement_factors.loc[current_age].values[:num_ages - truncation_length]
     return prod((1 - multiply(Y, X))[:(num_ages - (max_age - to_age + truncation_length))])
+
+
+if __name__ == '__main__':
+    print('Hello World')
