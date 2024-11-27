@@ -3,8 +3,8 @@ from collections import defaultdict
 from utils.calculate_fas import calculate_fas
 
 
-DEFERRED_FACTORS_PATH = '/Users/brianogrady/src/python3/pension/pension_analysis/data/deferred_factors.xlsx'
-INCREASE_RATE_PATH = '/Users/brianogrady/src/python3/pension/pension_analysis/data/salary_increase_rate.xlsx'
+DEFERRED_FACTORS_PATH = 'data/deferred_factors.xlsx'
+INCREASE_RATE_PATH = 'data/salary_increase_rate.xlsx'
 
 def main(yos: int,
          age: int,
