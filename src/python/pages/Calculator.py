@@ -9,7 +9,6 @@ st.title("Home Page")
 left_col, right_col = st.columns(2)
 left_col.title("My Pension Benefit")
 left_col.write("---")
-left_col.write("Some text here")
 right_col.title("Results")
  
 
@@ -30,7 +29,7 @@ age = left_col.number_input(label="Enter your age",
                       value=30)
  
 # input 2
-yos = left_col.number_input(label="Enter your years of service", 
+yos = left_col.number_input(label="How long have you been working for the state?", 
                       value=5, 
                       min_value=0, 
                       max_value=70)
@@ -50,7 +49,10 @@ gender = left_col.radio(label="What is your gender?",
 
 def calculate():
     ans = main(yos, age, salary)
-    right_col.success(f"Answer = {ans}")
+    markdown = "### Pension Benefit Details\n"
+    for key, value in ans.items():
+        markdown += f"- **{key}:** ${value:,.2f}\n"
+    right_col.markdown(markdown)
 
 
 if left_col.button("Calculate result"):

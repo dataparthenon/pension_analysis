@@ -1,6 +1,7 @@
 import pandas as pd
 from collections import defaultdict
 from utils.calculate_fas import calculate_fas
+from typing import Dict
 
 
 DEFERRED_FACTORS_PATH = 'data/deferred_factors.xlsx'
@@ -8,7 +9,7 @@ INCREASE_RATE_PATH = 'data/salary_increase_rate.xlsx'
 
 def main(yos: int,
          age: int,
-         comp: float) -> pd.DataFrame:
+         comp: float) -> Dict[str, float]:
     deferred_factors = pd.read_excel(DEFERRED_FACTORS_PATH,
                                     usecols=['Age', 'Combined_Factor'],
                                     index_col='Age',
@@ -40,11 +41,11 @@ def main(yos: int,
     pvab_next_year = accrued_benefit_next_year * DEFERRED_FACTORS[age + 1] * PVAB_FACTOR
     pvab_increase = pvab_next_year - pvab
     return {
-        'fas': fas,
-        'fas_next_year': fas_next_year,
-        'accrued_benefit': accrued_benefit,
-        'pvab': pvab,
-        'accrued_benefit_next_year': accrued_benefit_next_year,
-        'pvab_next_year': pvab_next_year,
-        'pvab_increase': pvab_increase
+        'Five-Year Average Salary (FAS)': fas,
+        'Accrued Benefit': accrued_benefit,
+        'PVAB': pvab,
+        "Next Year's FAS": fas_next_year,
+        "Next Year's Accrued Benefit": accrued_benefit_next_year,
+        "Next Years' PVAB": pvab_next_year,
+        'Increase in PVAB': pvab_increase
     }
